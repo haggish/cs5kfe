@@ -1,0 +1,144 @@
+'use strict'
+
+### Controllers ###
+
+angular.module('app.controllers', [])
+
+.controller('AppCtrl', [
+    '$scope'
+    '$location'
+    '$resource'
+    '$rootScope'
+
+    ($scope, $location, $resource, $rootScope) ->
+
+      # Uses the url to determine if the selected
+      # menu item should have the class active.
+      $scope.$location = $location
+      $scope.$watch('$location.path()', (path) ->
+        $scope.activeNavId = path || '/'
+      )
+
+      # getClass compares the current url with the id.
+      # If the current url starts with the id it returns 'active'
+      # otherwise it will return '' an empty string. E.g.
+      #
+      #   # current url = '/products/1'
+      #   getClass('/products') # returns 'active'
+      #   getClass('/orders') # returns ''
+      #
+      $scope.getClass = (id) ->
+        if $scope.activeNavId.substring(0, id.length) == id
+          return 'active'
+        else
+          return ''
+  ])
+
+.controller('Container', [
+    '$scope'
+
+    ($scope) ->
+      $scope.tabs = ['CODES', 'INFO']
+
+      $scope.selectedTab = 'CODES'
+
+      $scope.select = (tab) ->
+        $scope.selectedTab = tab
+  ])
+
+.controller('Controller', [
+    '$scope'
+
+    ($scope) ->
+      $scope.codesets = [
+        id: 'CS01'
+        name: 'Code set number one'
+        description: 'Some kind of code set'
+        codes: [
+          id: 'CODE01'
+          name: 'Code number one'
+          description: 'Some kind of code'
+          values: [
+            value: 'x'
+          ,
+            value: 'y'
+          ]
+        ,
+          id: 'CODE02'
+          name: 'Code number two'
+          description: 'Some other kind of code'
+          values: [
+            value: 'z'
+          ]
+        ]
+      ,
+        id: 'CS02'
+        name: 'Code set number two'
+        description: 'Some other kind of code set'
+        codes: [
+          id: 'CODE03'
+          name: 'Code number three'
+          description: 'Yet another kind of code'
+        ]
+      ]
+
+      $scope.selectCodeset = (scs) ->
+        console.log("select")
+        edit = false
+        $scope.selectedCodeset = scs
+        $scope.selectedCode = undefined
+
+      $scope.selectCode = (sc) ->
+        $scope.selectedCode = sc
+
+      $scope.edit = false
+  ])
+
+.controller('MyCtrl1', [
+    '$scope'
+
+    ($scope) ->
+      $scope.onePlusOne = 2
+  ])
+
+.controller('MyCtrl2', [
+    '$scope'
+
+    ($scope) ->
+      $scope
+  ])
+
+.controller('TodoCtrl', [
+    '$scope'
+
+    ($scope) ->
+      $scope.todos = [
+        text: "learn angular"
+        done: true
+      ,
+        text: "build an angular app"
+        done: false
+      ]
+
+      $scope.addTodo = ->
+        $scope.todos.push
+          text: $scope.todoText
+          done: false
+
+        $scope.todoText = ""
+
+      $scope.remaining = ->
+        count = 0
+        angular.forEach $scope.todos, (todo) ->
+          count += (if todo.done then 0 else 1)
+
+        count
+
+      $scope.archive = ->
+        oldTodos = $scope.todos
+        $scope.todos = []
+        angular.forEach oldTodos, (todo) ->
+          $scope.todos.push todo  unless todo.done
+
+  ])
+

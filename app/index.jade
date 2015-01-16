@@ -1,0 +1,39 @@
+!!! 5
+html.no-js
+    head
+        meta(charset="utf-8")
+        title='CS5k'
+        meta(name='description', content='')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='css/app.css')
+        //-script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+        //if lte IE 7
+          script(src='http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js')
+        //if lte IE 8
+          script(src='//html5shiv.googlecode.com/svn/trunk/html5.js')
+        script.
+            window.brunch = window.brunch || {};
+            window.brunch['auto-reload'] = {
+                enabled: true
+            };
+        script(src='js/vendor.js')
+        script(src='js/partials.js')
+        script(src='js/app.js')
+    body(ng-app='CS5k')
+        .container-fluid(ng-controller='Container')
+            .header.row
+                h1.col-xs-12.col-sm-7.col-md-4.title.text-muted codeset 5ooo
+                ul.col-xs-12.col-sm-5.col-md-offset-4.col-md-4.navtabs.nav.nav-pills.pull-right
+                    li(ng-repeat='tab in tabs', ng-class='{active:selectedTab==tab}')
+                        a(ng-click='select(tab)', ng-href='#/{{tab}}') {{tab}}
+            .headerBack
+            .fadein
+            .content(ng-view)
+            .fadeout
+            .footerBack
+            .footer.row
+                p.col-xs-12.col-sm-1.pull-left fååter
+                .col-xs-12.col-sm-11.pull-right
+                    p.footerLinks
+                        a(target='_blank', href='http://www.cnn.com') CNN
+                    p.footerLinks POOPY X

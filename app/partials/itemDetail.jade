@@ -1,0 +1,29 @@
+span {{item.id}}
+    span.glyphicon.glyphicon-plus.pull-right(
+    ng-click='expanded = true'
+    ng-hide='expanded == true'
+    )
+    span.glyphicon.glyphicon-minus.pull-right(
+    ng-click='expanded = false'
+    ng-show='expanded == true'
+    )
+    span(ng-show='expanded == true')
+        form
+            span(ng-click='edited = true', ng-hide='edited')
+                p {{item.name}}
+            span(ng-show='edited')
+                input(
+                    type='text'
+                    placeholder='{{item.name}}'
+                    ng-model='item.name'
+                    ng-blur='edited = false'
+                )
+            span(ng-click='edited = true', ng-hide='edited')
+                p {{item.description}}
+            span(ng-show='editable')
+                input(
+                    type='text'
+                    placeholder='{{item.description}}'
+                    ng-model='item.description'
+                    ng-blur='edited = false'
+                )

@@ -1,0 +1,25 @@
+.col-md-12
+    .col-md-3
+        ul.list-group
+            li.list-group-item(
+                ng-repeat='cs in codesets'
+                ng-class='{active:selectedCodeset==cs}'
+                data-toggle='tooltip'
+                title='{{cs.name}}'
+                ng-click='selectCodeset(cs)'
+            )
+                item-detail(item='cs')
+    .col-md-3
+        div.list-group
+            a.list-group-item(
+                ng-repeat='c in selectedCodeset.codes'
+                ng-class='{active:selectedCode==c}'
+                data-toggle='tooltip'
+                title='{{c.name}}'
+                ng-click='selectCode(c)'
+            )
+                item-detail(item='c')
+    .col-md-6
+        div.list-group
+            a.list-group-item(ng-repeat='v in selectedCode.values') {{v.value}}
+                span.glyphicon.glyphicon-plus.pull-right

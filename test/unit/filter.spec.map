@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "filter.spec.js",
+  "sourceRoot": "",
+  "sources": [
+    "filter.spec.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;CAAA,CAAA,UAAA;CAAA,CAGA,CAAmB,KAAnB,CAAmB;CACjB,GAAA,EAAW,IAAX,GAAW;CAEF,CAAe,CAAA,KAAxB,CAAwB,EAAxB,EAAA;CAEE,EAAkB,GAAlB,EAAkB,CAAC,CAAnB;CACE,CAA0B,GAA1B,GAAA,CAAA,CAAA;CADS,MAAO;CAKf,CAAH,CAAoC,GAAP,GAAQ,IAArC,IAAoC,OAApC;CACS,KAAP,CAAA,QAAA,EAAO,MAAP,CAAO;CADoB,MAAO;CAPtC,IAAwB;CAH1B,EAAmB;CAHnB"
+}
