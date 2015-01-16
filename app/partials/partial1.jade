@@ -1,25 +1,26 @@
 .col-md-12
     .col-md-3
-        ul.list-group
-            li.list-group-item(
+        accordion
+            accordion-group(
                 ng-repeat='cs in codesets'
-                ng-class='{active:selectedCodeset==cs}'
-                data-toggle='tooltip'
-                title='{{cs.name}}'
+                heading='{{cs.id}}'
                 ng-click='selectCodeset(cs)'
             )
-                item-detail(item='cs')
+                p {{cs.name}}
+                p {{cs.description}}
     .col-md-3
-        div.list-group
-            a.list-group-item(
+        accordion
+            accordion-group(
                 ng-repeat='c in selectedCodeset.codes'
-                ng-class='{active:selectedCode==c}'
-                data-toggle='tooltip'
-                title='{{c.name}}'
+                heading='{{c.id}}'
                 ng-click='selectCode(c)'
             )
-                item-detail(item='c')
+                p {{c.name}}
+                p {{cs.description}}
     .col-md-6
-        div.list-group
-            a.list-group-item(ng-repeat='v in selectedCode.values') {{v.value}}
-                span.glyphicon.glyphicon-plus.pull-right
+        accordion
+            accordion-group(
+                ng-repeat='v in selectedCode.values'
+                heading='{{v.value}}'
+            )
+                i TODO effectivity details etc
