@@ -6,6 +6,7 @@ App = angular.module('CS5k', [
   'ngResource'
   'ngRoute'
   'ui.bootstrap'
+  'xeditable'
   'app.controllers'
   'app.directives'
   'app.filters'
@@ -30,3 +31,8 @@ App.config([
     # Without server side support html5 must be disabled.
     $locationProvider.html5Mode(false)
 ])
+
+App.run((editableOptions, editableThemes) ->
+  editableOptions.theme = 'bs3'
+  editableThemes.bs3.inputClass = 'input-sm'
+)

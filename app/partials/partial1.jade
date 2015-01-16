@@ -6,8 +6,18 @@
                 heading='{{cs.id}}'
                 ng-click='selectCodeset(cs)'
             )
-                p {{cs.name}}
-                p {{cs.description}}
+                p
+                    a(
+                        href='#'
+                        editable-text='cs.name'
+                        buttons='no'
+                    ) {{cs.name}}
+                p
+                    a(
+                        href='#'
+                        editable-text='cs.description'
+                        buttons='no'
+                    ) {{cs.description}}
     .col-md-3
         accordion
             accordion-group(
@@ -15,8 +25,18 @@
                 heading='{{c.id}}'
                 ng-click='selectCode(c)'
             )
-                p {{c.name}}
-                p {{cs.description}}
+                p
+                    a(
+                        href='#'
+                        editable-text='c.name'
+                        buttons='no'
+                    ) {{c.name}}
+                p
+                    a(
+                        href='#'
+                        editable-text='c.description'
+                        buttons='no'
+                    ) {{cs.description}}
     .col-md-6
         accordion
             accordion-group(
