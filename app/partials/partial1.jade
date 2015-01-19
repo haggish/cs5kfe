@@ -1,6 +1,17 @@
 .col-md-12
     .col-md-3
         accordion
+            .input-group
+                .input-group-btn
+                    button.btn.btn-default(
+                        title='Add new code set'
+                        ng-click='addCodeset()'
+                    ) +
+                    input.form-control(
+                        type='text'
+                        placeholder='New code set ID'
+                        ng-model='newCodeset.id'
+                    )
             accordion-group(
                 ng-repeat='cs in codesets'
                 heading='{{cs.id}}'
@@ -20,6 +31,17 @@
                     ) {{cs.description}}
     .col-md-3
         accordion
+            .input-group(ng-show='selectedCodeset')
+                .input-group-btn
+                    button.btn.btn-default(
+                            title='Add new code'
+                            ng-click='addCode()'
+                        ) +
+                    input.form-control(
+                        type='text'
+                        placeholder='New code ID'
+                        ng-model='newCode.id'
+                    )
             accordion-group(
                 ng-repeat='c in selectedCodeset.codes'
                 heading='{{c.id}}'

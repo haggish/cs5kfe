@@ -82,16 +82,36 @@ angular.module('app.controllers', [])
         ]
       ]
 
+      $scope.newCodeset =
+        id: 'New code set ID'
+        name: 'New code set name'
+        description: 'New code set description'
+        codes: []
+
+      $scope.newCode =
+        id: 'New code ID'
+        name: 'New code name'
+        description: 'New code description'
+        values: []
+
       $scope.selectCodeset = (scs) ->
-        console.log("select")
-        edit = false
         $scope.selectedCodeset = scs
         $scope.selectedCode = undefined
 
       $scope.selectCode = (sc) ->
         $scope.selectedCode = sc
 
-      $scope.edit = false
+      $scope.addCodeset = () ->
+        $scope.selectedCodeset = angular.copy($scope.newCodeset)
+        $scope.codesets.unshift $scope.selectedCodeset
+        $scope.selectedCode = undefined
+        $scope.newCodeset.id = 'New code set ID'
+
+      $scope.addCode = () ->
+        $scope.selectedCode = angular.copy($scope.newCode)
+        $scope.selectedCodeset.codes.unshift $scope.selectedCode
+        $scope.newCode.id = 'New code ID'
+
   ])
 
 .controller('MyCtrl1', [
