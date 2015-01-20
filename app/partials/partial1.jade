@@ -23,6 +23,9 @@
                         editable-text='cs.name'
                         buttons='no'
                     ) {{cs.name}}
+                    span.glyphicon.glyphicon-remove.pull-right(
+                        ng-click='removeCodeset(cs)'
+                    )
                 p
                     a(
                         href='#'
@@ -53,7 +56,10 @@
                         editable-text='c.name'
                         buttons='no'
                     ) {{c.name}}
-                p
+                    span.glyphicon.glyphicon-remove.pull-right(
+                        ng-click='removeCode(c)'
+                    )
+                    p
                     a(
                         href='#'
                         editable-text='c.description'

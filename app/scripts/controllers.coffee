@@ -112,6 +112,21 @@ angular.module('app.controllers', [])
         $scope.selectedCodeset.codes.unshift $scope.selectedCode
         $scope.newCode.id = 'New code ID'
 
+      $scope.removeCodeset = (cs) ->
+        # clearing the children to update the UI - removed is always selected
+        $scope.selectedCode?.values?.length = 0
+        $scope.selectedCodeset?.codes?.length = 0
+        remove(cs, $scope.codesets)
+
+      $scope.removeCode = (c) ->
+        # clearing the children to update the UI - removed is always selected
+        $scope.selectedCode?.values?.length = 0
+        remove(c, $scope.selectedCodeset.codes)
+
+      remove = (x, arr) ->
+        idxOfX = arr.indexOf(x)
+        arr.splice(idxOfX, 1)
+
   ])
 
 .controller('MyCtrl1', [
